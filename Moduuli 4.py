@@ -1,67 +1,80 @@
 #Teht 1
 
-luku = 1
-while luku <= 1000:
-    if luku % 3 == 0:
-        print(luku)
-    luku += 1
+num = 1
+
+while num <= 1000:
+    if num % 3 == 0:
+        print(num)
+    num += 1
 
 #Teht 2
 
-values = [10, 5, 0, -1]
-
-for inches in values:
+while True:
+    inches = float(input("tuumamäärä (lopet negatiivise): "))
     if inches < 0:
-        print("Ohjelma lopetettu.")
         break
-    centimeters = inches * 2.54
-    print(f"{inches} tuumaa on {centimeters:.2f} senttimetriä.")
-
+    cm = inches * 2.54
+    print(f"{inches} tuumaa on {cm:.2f} cm")
 
 #Teht 3
 
-values = [5, 10, -3, 42, 0]
+numbers = []
 
-if values:
-    smallest = min(values)
-    largest = max(values)
-    print(f"Pienin luku: {smallest}")
-    print(f"Suurin luku: {largest}")
+while True:
+    user_input = input("Anna luku : ")
+    if user_input == "":
+        break
+    try:
+        number = float(user_input)
+        numbers.append(number)
+    except ValueError:
+        print("Virheellinen syöte, anna numero.")
+
+if numbers:
+    print(f"Pienin luku: {min(numbers)}")
+    print(f"Suurin luku: {max(numbers)}")
 else:
-    print("Ei lukuja syötetty.")
+    print("Eiantanut yhtään lukua.")
 
 #Teht 4
 
+import random
 
-computer_number = 267
-guesses = [797, 56, 267]
+salainen_luku = random.randint(1, 10)
 
-for guess in guesses:
-    if guess < computer_number:
-        print(f"{guess} on liian pieni arvaus.")
-    elif guess > computer_number:
-        print(f"{guess} on liian suuri arvaus.")
-    else:
-        print(f"{guess} on oikein!")
-        break
-
+while True:
+    try:
+        arvaus = int(input("Arvaa luku väliltä 1-10: "))
+        if arvaus < salainen_luku:
+            print("Liian pieni arvaus")
+        elif arvaus > salainen_luku:
+            print("Liian suuri arvaus")
+        else:
+            print("Oikein!")
+            break
+    except ValueError:
+        print("Anna kokonaisluku väliltä 1-10.")
 
 #Teht 5
 
-Username = "python"
-password = "rules"
-error_count = 0
+MAX_YRITYKSET = 5
+OIKAIS_TUNNUS = "python"
+OIKEA_SALASANA = "rules"
 
-while error_count < 5:
-    entered_username = input("Anna käyttäjätunnus")
-    entered_password = input("laita salasana")
-    if entered_username == Username and entered_password == password:
+yritykset = 0
+
+while yritykset < MAX_YRITYKSET:
+    kayttajatunnus = input("Anna käyttäjätunnus: ")
+    salasana = input("Anna salasana: ")
+
+    if kayttajatunnus == OIKAIS_TUNNUS and salasana == OIKEA_SALASANA:
         print("Tervetuloa")
+        break
     else:
-        print("väärä käyttäjätunnus tai salasana")
-        error_count += 1
+        print("Väärä tunnus tai salasana.")
+        yritykset += 1
 
-if error_count == 5:
-    print("pääsy estetty")
+if yritykset == MAX_YRITYKSET:
+    print("Pääsy evätty.")
 
 
